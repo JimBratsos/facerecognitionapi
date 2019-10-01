@@ -1,6 +1,6 @@
 const express = require('express');
 const bodyParser = require('body-parser');
-const bcrypt = require('bcrypt-nodejs');
+const bcrypt = require('bcrypt');
 const cors = require('cors');
 const knex = require('knex');
 
@@ -11,9 +11,12 @@ const image = require('./controllers/image');
 
 const postgres = knex({
   client: 'pg',
+  version:'11',
   connection: {
-    connectionString : process.env.DATABASE_URL,
-    ssl:true,
+    host : '127.0.0.1',
+    user : 'postgres',
+    password:'Markiplier1',
+    database:'facerecognition'
   }
 });
 
@@ -40,7 +43,7 @@ app.put('/image',(req,res)=>{image.handleImage(req,res,postgres)})
 app.post('/imageurl',(req,res)=>{image.handleApiCall(req,res)})
 
 
-app.listen(process.env.PORT || 3001, ()=>{
+app.listen(3001, ()=>{
 
 	console.log(`App is all good on ${process.env.PORT} mate.`)
 })
