@@ -13,10 +13,8 @@ const postgres = knex({
   client: 'pg',
   version: '11',
   connection: {
-    host : '127.0.0.1',
-    user : 'postgres',
-    password : 'Markiplier1',
-    database : 'facerecognition'
+    connectionString : process.env.DATABASE_URL,
+    ssl:true,
   }
 });
 
