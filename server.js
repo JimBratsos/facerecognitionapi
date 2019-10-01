@@ -15,7 +15,7 @@ const postgres = knex({
   connection: {
     host : '127.0.0.1',
     user : 'postgres',
-    password:'Markiplier1',
+    password:'',
     database:'facerecognition'
   }
 });
